@@ -4,6 +4,7 @@ filetype off
 " Download plug-ins to the ~/.vim/plugged/ directory
 call plug#begin('~/.vim/plugged')
 
+Plug 'ayu-theme/ayu-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
 Plug 'sheerun/vim-polyglot'
 Plug 'cocopon/iceberg.vim'
@@ -18,6 +19,8 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'cormacrelf/vim-colors-github'
+Plug 'itchyny/lightline.vim' 
 "Plug 'ycm-core/youcompleteme'
 
 call plug#end()
@@ -25,7 +28,10 @@ filetype plugin indent on
 
 set nu
 syntax on
-color hybrid_material
+colorscheme ayu
+" colorscheme github
+let g:lightline = { 'colorscheme': 'ayu' } 
+
 
 set tabstop=4
 set shiftwidth=4
@@ -33,7 +39,7 @@ set expandtab
 set incsearch
 set hlsearch
 set background=dark
-
+set termguicolors
 set termwinsize=12x0
 set splitbelow
 set mouse=a
@@ -64,6 +70,9 @@ let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
 let NERDTreeWinPos = 'left'     " Panel opens on the left side
 let NERDTreeWinSize = 31        " Set panel width to 31 columns
 
-
+let ayucolor="dark"
 
 nmap <F2> :NERDTreeToggle<CR>
+
+" Settings of lightline.
+set laststatus=2
