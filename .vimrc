@@ -2,10 +2,11 @@ set nocompatible
 filetype off
 
 " Download plug-ins to the ~/.vim/plugged/ directory
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 Plug 'ayu-theme/ayu-vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
+" Uncomment if JS development
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
 Plug 'sheerun/vim-polyglot'
 Plug 'cocopon/iceberg.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -20,18 +21,24 @@ Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cormacrelf/vim-colors-github'
-Plug 'itchyny/lightline.vim' 
+"Plug 'itchyny/lightline.vim' 
 "Plug 'ycm-core/youcompleteme'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 filetype plugin indent on
 
 set nu
 syntax on
-colorscheme ayu
+colorscheme gruvbox
 " colorscheme github
-let g:lightline = { 'colorscheme': 'ayu' } 
 
+" Airline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 set tabstop=4
 set shiftwidth=4
@@ -40,7 +47,8 @@ set incsearch
 set hlsearch
 set background=dark
 set termguicolors
-set termwinsize=12x0
+" Uncomment if not using Neovim.
+"set termwinsize=12x0
 set splitbelow
 set mouse=a
 
