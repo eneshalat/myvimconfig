@@ -19,12 +19,19 @@ Plug 'preservim/tagbar'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cormacrelf/vim-colors-github'
 "Plug 'itchyny/lightline.vim' 
 "Plug 'ycm-core/youcompleteme'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+"Plug 'autoimu/LanguageClient-neovim'
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
 
 call plug#end()
 filetype plugin indent on
@@ -40,6 +47,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
+set encoding=utf-8
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -82,5 +90,23 @@ let ayucolor="dark"
 
 nmap <F2> :NERDTreeToggle<CR>
 
-" Settings of lightline.
-set laststatus=2
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :bprevious<CR>
+nnoremap <C-tab>   :bnext<CR>
